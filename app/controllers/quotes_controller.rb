@@ -11,7 +11,15 @@ class QuotesController < ApplicationController
   end
 
   def show
-    @goods = @quote.goods
+    @quote = Quote.find(params[:id])
+    respond_to do |format|
+      format.pdf {
+        send_data @quote.receipt.render,
+                  filename: "#{@quote.created_at.strftime("%Y-%m-%d")}-gorails-receipt.pdf",
+                  type: "application/pdf",
+                  disposition: :inline
+      }
+    end
   end
 
   def new
@@ -40,4 +48,6 @@ class QuotesController < ApplicationController
   def find_quote
     @quote = Quote.find(params[:id])
   end
+
+
 end
