@@ -36,10 +36,19 @@ class QuotesController < ApplicationController
       end
     end
   end
-  end
+end
 
 def destroy
   @quote.destroy
+end
+
+def change_quotes_into_invoices
+  @quotes = current_user.quotes.where(is_invoice: false)
+  if params[:action] === true
+    @quotes.update(quote)
+
+  end
+
 end
 
 private
@@ -50,7 +59,8 @@ end
 
 def quote_params
   params.fetch(:quote, {}).permit(
-      :is_invoice)
+    :is_invoice
+  )
 end
 
 
