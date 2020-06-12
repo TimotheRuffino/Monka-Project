@@ -73,7 +73,7 @@ nb_quotes.times do |i|
       invoice_sending_counter: 0,
       is_invoice: false,
       is_paid: false,
-      user: users.sample,
+      user: users.first,
       customer: customer)
 
   puts "#{i+1} quote(s) generated"

@@ -26,16 +26,31 @@ class QuotesController < ApplicationController
   end
 
   def update
-    @quote.update
+    respond_to do |format|
+      if @quote.update(quote_params)
+        format.html { redirect_to @quote, notice: 'Le client a été mis à jour avec succès.' }
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.html { render :edit }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   end
 
-  def destroy
-    @quote.destroy
-  end
-
-  private
-
-  def find_quote
-    @quote = Quote.find(params[:id])
-  end
+def destroy
+  @quote.destroy
 end
+
+private
+
+def find_quote
+  @quote = Quote.find(params[:id])
+end
+
+def quote_params
+  params.fetch(:quote, {}).permit(
+      :is_invoice)
+end
+
+
