@@ -11,6 +11,15 @@ class QuotesController < ApplicationController
 
   def show
     @goods = @quote.goods
+
+    def show
+      respond_to do |format|
+        format.html { render :show }
+        format.pdf {
+          render :pdf => "show", :layout => 'pdf.html.haml', :template => 'pdf.html.haml'
+        }
+      end
+    end
   end
 
   def new
