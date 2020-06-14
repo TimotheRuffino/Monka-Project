@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid">
+  <div class="justify-content-center"><%= @good.title %></div>
+  <div class="justify-content-center"><%= @good.description %></div>
+  <div class="justify-content-center"><%= @good.quantity %></div>
+  <div class="justify-content-center"><%= @good.price %> €</div>
+</div>
+
+
+<%= link_to 'Edit', edit_good_path(@good) %> |
+<%= link_to 'Back', goods_path %>
