@@ -11,29 +11,21 @@
         <%= label_tag 'Description :' %>
         <%= field.text_field :description, class:"form-control", placeholder:"" %>
       </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="form-row">
-      <div class="col-7">
+      <div class="col">
         <%= label_tag 'Quantité :' %>
         <%= field.number_field :quantity, class:"form-control", placeholder:"" %>
       </div>
-      <div class="col-5">
+      <div class="col">
         <%= label_tag 'prix :' %>
         <%= field.number_field :price, class:"form-control", placeholder:"" %>
       </div>
     </div>
   </div>
-
-
     <div class="form-group my-5">
       <div class="row justify-content-center">
-        <%= submit_tag "Valider", {class: 'btn btn-primary'} %>
+        <%= field.submit "Valider", {class: 'btn btn-primary'} %>
       </div>
     </div>
-  </div>
 <% end %>
 
 
