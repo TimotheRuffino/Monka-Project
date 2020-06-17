@@ -1,5 +1,4 @@
 class QuotesController < ApplicationController
-  include ApplicationHelper
 
   before_action :authenticate_user!
   before_action :find_quote, only: [:show, :edit, :update, :destroy]
@@ -14,6 +13,15 @@ class QuotesController < ApplicationController
     @goods = @quote.goods
     @user = current_user
 
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = QuotePdf.new(@quote, @user, view_context)
+        send_data pdf.render, filename: "Doc_#{@quote.quote_number}.pdf",
+                  type: "application/pdf",
+                  disposition: "inline"
+      end
+    end
   end
 
   def new
@@ -48,6 +56,14 @@ class QuotesController < ApplicationController
     @quote.destroy
     flash[:error] = "L'élément a bien été supprimé"
     redirect_to :quotes
+  end
+
+  #Send mail to customer
+  def payment_send
+    @quote = Quote.find(params[:id])
+    QuoteMailer.payment_email(@quote).deliver_now
+    flash[:success] = "Votre document a bien été envoyé par mail !"
+    redirect_back(fallback_location: quotes_path)
   end
 
   private
