@@ -26,6 +26,7 @@
     <%= form.text_field :email %>
   </div>
 
+
   <div class="field">
     <%= form.label :phone_number %>
     <%= form.text_field :phone_number %>
@@ -39,4 +40,9 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
+
+    <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+    <br/>
+    <input type="submit" value="Submit">
 <% end %>
