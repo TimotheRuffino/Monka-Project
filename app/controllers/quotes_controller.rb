@@ -61,6 +61,17 @@ class QuotesController < ApplicationController
         end
       end
     end
+
+    if params[:is_paid] === "true"
+
+      respond_to do |format|
+        if @quote.update(quote_params)
+          format.html { redirect_to @quote, notice: 'Le devis ou la facture a bien été mise à jour.' }
+        else
+          format.html { render :edit }
+        end
+      end
+    end
   end
 
   def destroy
@@ -158,6 +169,16 @@ class QuotesController < ApplicationController
     )
 
     flash[:success] = "Le devis a été transformé en facture"
+
+    redirect_to :quotes
+  end
+
+  def is_paid(quote)
+    quote.update(
+        is_paid: true
+    )
+
+    flash[:success] = "La facture a été noté comme payé"
 
     redirect_to :quotes
   end

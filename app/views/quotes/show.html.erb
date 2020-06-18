@@ -115,13 +115,16 @@
       </div>
       <div class="col">
         <%= form_tag quote_path(@quote.id, convert_to_invoice: true), method: "put" do %>
-          <button type="submit" class="btn btn-outline-secondary btn-block mx-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button>
-        <% end %>
+          <button type="submit" class="btn btn-outline-secondary btn-block mx-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button></div>
+          <div class="col">
+        <%= form_tag quote_path(@quote.id, is_paid: true), method: "put" do %>
+          <button type="submit" class="btn btn-outline-secondary btn-block mx-3"><i class="material-icons">arrow_forward</i> Payée </button>
+            <% end %>
       </div>
       <div class="col">
         <a href="<%= image_path "Devis_FS0501202012.pdf" %>" target="_blank" class="btn btn-primary"><i class="material-icons">file_download</i> Télécharger</a>
       </div>
     </div>
   </div>
-
+            <% end %>
 </div>
