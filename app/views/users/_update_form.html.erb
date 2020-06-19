@@ -1,3 +1,4 @@
+<div class="row justify-content-center">
 <%= form_with(model: user, local: true, method: :put) do |update| %>
 
   <div class="form-group">
@@ -33,7 +34,8 @@
   </div>
 
   <div class="actions text-center">
-    <button type="submit" class="btn btn-primary">Envoyer</button>
-    <%= link_to 'Retour', @user, class:"btn btn-secondary mx-5 my-5" %>
+    <button type="submit" class="btn btn-primary">Soumettre</button>
+    <%= link_to 'Retour', @user, class:"btn btn-secondary mx-3 my-5" %>
   </div>
 <% end %>
+</div>
