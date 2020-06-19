@@ -36,12 +36,10 @@ body {
   margin: auto;
 }
 
-
 .card-img-top {
   object-fit: cover;
   height:15rem;
 }
-
 
 .landing{
   border: 1px solid #e7e7fc;
@@ -70,4 +68,8 @@ body {
 
 .card1:hover {
   transform: scale(1.1);
+}
+
+.carousel-inner.active {
+  color:#b6b6fa
 }
